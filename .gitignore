@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+
+# Logs and local files
+*.log
+*.csv
+sim_trades.csv
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.python-version
+
+# VS Code settings (optional)
+.vscode/
+
+# macOS / Linux
+.DS_Store
+
+# PyCharm / JetBrains
+.idea/
+
+# Flask cache
+instance/
+*.db
+*.sqlite3
+
+# Deploy artifacts
+*.egg-info/
+dist/
+build/

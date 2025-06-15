@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simulated Trading Dashboard</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f4f6f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #2c3e50;
+      color: #fff;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+    }
+    h2 {
+      margin-top: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 0.6rem;
+      text-align: center;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+    .profit { color: green; }
+    .loss { color: red; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📊 Simulated BTC/USDT Trading Dashboard</h1>
+  </header>
+  <div class="container">
+    <h2>Status</h2>
+    <p><strong>Simulated Balance:</strong> {{ balance }} USDT</p>
+    <p><strong>Open Position:</strong> {{ position or 'None' }}</p>
+    {% if entry_price and position %}
+      <p><strong>Entry Price:</strong> {{ entry_price }}</p>
+    {% endif %}
+
+    <h2>Trade Log</h2>
+    {% if trades %}
+      <table>
+        <tr>
+          <th>Timestamp</th>
+          <th>Action</th>
+          <th>Price</th>
+          <th>Position</th>
+          <th>PnL</th>
+          <th>Balance</th>
+        </tr>
+        {% for row in trades %}
+          <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td class="{{ 'profit' if row[4]|float >= 0 else 'loss' }}">{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% else %}
+      <p>No trades yet.</p>
+    {% endif %}
+  </div>
+</body>
+</html>
